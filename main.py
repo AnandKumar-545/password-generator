@@ -32,14 +32,14 @@ def save_data():
     name_email = input_email.get()
     name_password = input_password.get()
 
-    with open('password.txt','w') as data:
+    with open('password.txt','a') as data:
         if len(name_website)==0 or len(name_email)<=3 or len(name_password)==0:
             option = messagebox.showinfo(title="Uhh-ohh", message="Oops missed a field")
         else:
             option = messagebox.askokcancel(title="Confirm",
                                             message=f"Website: {name_website}\nEmail: {name_email}\nPassword: {name_password}\nSave?")
             if option:
-                data.write(f"{name_website} || {name_password}\n")
+                data.write(f"{name_website} || {name_email} || {name_password}\n")
                 option = messagebox.showinfo(title="Success", message="Successfully Saved")
                 input_password.delete(0, END)
                 input_website.delete(0, END)
